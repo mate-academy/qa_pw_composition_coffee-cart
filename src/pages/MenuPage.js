@@ -62,7 +62,7 @@ export class MenuPage extends BasePage {
   }
 
   async assertPromoMessageIsVisible() {
-    await step(`Click 'No' promo button`, async () => {
+    await step(`Assert promo message is visible`, async () => {
       await expect(this.promoMessage).toBeVisible();
     });
   }
