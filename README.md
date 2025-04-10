@@ -1,5 +1,12 @@
 # Composition for Coffee-Cart pages
 
+## Table of contents
+
+- [Description](#description)
+- [Preparation](#preparation)
+- [Main Task](#main-task)
+- [Task Reporting](#task-reporting)
+
 ## Description
 
 In this task, you will practice creating reusable components and building pages from these components. 
@@ -9,7 +16,7 @@ The **Menu page** consists of the *Header*, *Menu list*, *Cup* and *Total count*
 
 ![menu page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/MenuPage.png). 
 
-Additionaly **Menu page** has the **Promo** component.  
+Additionaly **Menu page** has the *Promo* component.  
 
 ![menu page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/Promo.png). 
 
@@ -26,7 +33,7 @@ The **Cart page** consists of the *Header*, *Total count* and *Cart list* compon
     - `npm ci`
     - `npx playwright install`
 
-## Task
+## Main Task
 
 1. Create new folder `components` under the `.src/` folder.
 2. Create file `Header.js` under the `.src/components/` folder.
