@@ -5,11 +5,17 @@
 In this task, you will practice creating reusable components and building pages from these components. 
 You will create components classes for the Menu and Cart pages of the Coffee Cart. 
 
-For the Menu page you will create "Header", "Menu List", "Cup" and "TotalCount" components.
+The **Menu page** consists of the *Header*, *Menu list*, *Cup* and *Total count* components.
 
 ![menu page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/MenuPage.png). 
 
+Additionaly **Menu page** has the **Promo** component.  
 
+![menu page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/Promo.png). 
+
+The **Cart page** consists of the *Header*, *Total count* and *Cart list* components.
+
+![menu page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/CartPage.png). 
 
 ## Preparation
 
