@@ -14,15 +14,15 @@ You will create component classes for the Menu and Cart pages of the Coffee Cart
 
 The **Menu page** consists of the *Header*, *Cup*, and *Total count* components. 
 
-![menu page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/Menu.png). 
+![menu page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/Menu.png) 
 
 Additionally, the **Menu page** has the *Promo* component.  
 
-![promo](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/PromoComp.png). 
+![promo](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/PromoComp.png) 
 
 The **Cart page** consists of the *Header*, *Total count*, and *Cart list* components.
 
-![cart page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/Cart.png). 
+![cart page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/Cart.png) 
 
 Note that the *Total count* component is small, and it's possible to leave it within the page object. However, as it's used in two pages, we will create a separate class for it to avoid code duplication. 
 
