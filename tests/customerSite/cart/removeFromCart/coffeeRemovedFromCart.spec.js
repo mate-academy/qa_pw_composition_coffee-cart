@@ -15,7 +15,7 @@ testParameters.forEach(({ coffee }) => {
     await menuPage.open();
     await menuPage.clickCoffeeCup(coffee);
 
-    await menuPage.clickCartLink();
+    await menuPage.header.clickCartLink();
     await cartPage.waitForLoading();
 
     await cartPage.clickCoffeeListItemRemoveAllButton(coffee);

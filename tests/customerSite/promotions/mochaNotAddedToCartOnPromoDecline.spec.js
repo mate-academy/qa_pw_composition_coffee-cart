@@ -13,7 +13,7 @@ test('Discounted Mocha Not added to the Cart after promo rejecting', async ({
   await menuPage.assertPromoMessageIsVisible();
   await menuPage.clickNoPromoButton();
 
-  await menuPage.clickCartLink();
+  await menuPage.header.clickCartLink();
   await cartPage.waitForLoading();
 
   await cartPage.assertCoffeeItemIsVisible(COFFEE_NAMES.espresso);

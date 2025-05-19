@@ -5,7 +5,7 @@ test('Cart cleaned after page refresh', async ({ cartPage, menuPage }) => {
   await menuPage.open();
   await menuPage.clickCoffeeCup(COFFEE_NAMES.cappuccino);
 
-  await menuPage.clickCartLink();
+  await menuPage.header.clickCartLink();
   await cartPage.waitForLoading();
 
   await cartPage.assertCoffeeItemIsVisible(COFFEE_NAMES.cappuccino);

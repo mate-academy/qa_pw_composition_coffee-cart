@@ -1,17 +1,18 @@
 import { expect, step } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { Header }  from '../components/Header';
 
 export class MenuPage extends BasePage {
   constructor(page) {
     super(page);
     this._url = '/';
-    this.cartLink = page.getByLabel('Cart page');
     this.totalCheckout = page.getByTestId('checkout');
     this.promoMessage = page.getByText(
       "It's your lucky day! Get an extra cup of Mocha for $4.",
     );
     this.yesPromoButton = page.getByRole('button', { name: 'Yes, of course!' });
     this.noPromoButton = page.getByRole('button', { name: "Nah, I'll skip." });
+    this.header = new Header(page);
   }
 
   coffeeCupLocator(coffeeName) {
@@ -28,12 +29,6 @@ export class MenuPage extends BasePage {
   async clickCoffeeCup(coffeeName) {
     await step(`Click ${coffeeName} cup`, async () => {
       await this.coffeeCupLocator(coffeeName).click();
-    });
-  }
-
-  async clickCartLink() {
-    await step(`Click 'Cart' link`, async () => {
-      await this.cartLink.click();
     });
   }
 

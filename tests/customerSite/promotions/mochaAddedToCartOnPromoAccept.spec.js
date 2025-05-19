@@ -20,7 +20,7 @@ test('Discounted Mocha added to the Cart after promo accepting', async ({
 
   await menuPage.clickYesPromoButton();
 
-  await menuPage.clickCartLink();
+  await menuPage.header.clickCartLink();
   await cartPage.waitForLoading();
 
   await cartPage.assertCoffeeTotalCostContainsCorrectText(

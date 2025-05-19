@@ -1,5 +1,6 @@
 import { expect, step } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { Header } from '../components/Header';
 
 export class CartPage extends BasePage {
   constructor(page) {
@@ -8,6 +9,7 @@ export class CartPage extends BasePage {
     this.cartListLocator = page.getByRole('list').nth(1);
     this.notCoffeeMessage = page.getByText('No coffee, go add some.');
     this.totalCheckout = page.getByTestId('checkout');
+    this.header = new Header(page)
   }
 
   coffeeItem(name) {
