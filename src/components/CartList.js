@@ -6,6 +6,32 @@ export class CartList extends BaseComponent {
     super(page);
     this.cartListLocator = page.getByRole('list').nth(1);
   }
+  coffeeItem(name) {
+    return this.cartListLocator.getByRole('listitem').filter({ hasText: name });
+  }
+
+  coffeeListItemNameCell(name) {
+    return this.coffeeItem(name).locator('div').nth(0);
+  }
+
+  coffeeListItemUnitCell(name) {
+    return this.coffeeItem(name).locator('div').nth(1);
+  }
+
+  coffeeListItemTotalCostCell(name) {
+    return this.coffeeItem(name).locator('div').nth(3);
+  }
+    coffeeListItemRemoveAllButton(name) {
+    return this.page.getByLabel(`Remove all ${name}`);
+  }
+
+  coffeeListItemRemoveOneButton(name) {
+    return this.page.getByLabel(`Remove one ${name}`).nth(1);
+  }
+
+  coffeeListItemAddOneButton(name) {
+    return this.page.getByLabel(`Add one ${name}`).nth(1);
+  }
 
   async assertCoffeeItemIsVisible(name) {
     await step(`Assert the ${name} list item is visible`, async () => {
@@ -53,32 +79,5 @@ export class CartList extends BaseComponent {
     await step(`Click 'Add One' button for ${name} list item`, async () => {
       await this.coffeeListItemAddOneButton(name).click();
     });
-  }
-
-  coffeeItem(name) {
-    return this.cartListLocator.getByRole('listitem').filter({ hasText: name });
-  }
-
-  coffeeListItemNameCell(name) {
-    return this.coffeeItem(name).locator('div').nth(0);
-  }
-
-  coffeeListItemUnitCell(name) {
-    return this.coffeeItem(name).locator('div').nth(1);
-  }
-
-  coffeeListItemTotalCostCell(name) {
-    return this.coffeeItem(name).locator('div').nth(3);
-  }
-    coffeeListItemRemoveAllButton(name) {
-    return this.page.getByLabel(`Remove all ${name}`);
-  }
-
-  coffeeListItemRemoveOneButton(name) {
-    return this.page.getByLabel(`Remove one ${name}`).nth(1);
-  }
-
-  coffeeListItemAddOneButton(name) {
-    return this.page.getByLabel(`Add one ${name}`).nth(1);
   }
 }

@@ -19,6 +19,4 @@ export class CartPage extends BasePage {
       await expect(this.notCoffeeMessage).toBeVisible();
     });
   }
-
- 
 }

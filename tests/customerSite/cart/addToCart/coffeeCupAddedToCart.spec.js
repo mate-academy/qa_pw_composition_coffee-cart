@@ -18,7 +18,7 @@ testParameters.forEach(({ coffee, price }) => {
   }) => {
     const totalPriceStr = priceFormatStr(price);
     const unitPriceStr = unitPriceFormatStr(price, 1);
-
+    
     await menuPage.open();
     await menuPage.cup.clickCoffeeCup(coffee);
 

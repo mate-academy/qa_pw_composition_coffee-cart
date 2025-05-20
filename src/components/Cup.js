@@ -5,13 +5,7 @@ export class Cup extends BaseComponent {
   constructor(page) {
     super(page);
   }
-
-  async assertCoffeeCupCostHasValue(coffee, value) {
-    await step(`Assert ${coffee} cup cost has value: ${value}`, async () => {
-      await expect(this.coffeeCupCostLocator(coffee)).toContainText(value);
-    });
-  }
-  
+    
   coffeeCupLocator(coffeeName) {
     const testId = coffeeName.replace(' ', '_');
     return this.page.getByTestId(testId);
@@ -20,6 +14,12 @@ export class Cup extends BaseComponent {
   coffeeCupCostLocator(coffeeName) {
     const coffeeCup = this.coffeeCupLocator(coffeeName);
     return this.page.getByRole('listitem').filter({ has: coffeeCup });
+  }
+
+  async assertCoffeeCupCostHasValue(coffee, value) {
+    await step(`Assert ${coffee} cup cost has value: ${value}`, async () => {
+      await expect(this.coffeeCupCostLocator(coffee)).toContainText(value);
+    });
   }
 
   async clickCoffeeCup(coffeeName) {
