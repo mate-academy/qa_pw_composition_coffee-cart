@@ -7,9 +7,9 @@ import { parseTestTreeHierarchy } from '../../src/common/helpers/allureHelpers';
 
 export const test = base.extend<
   {
-    cartPage;
-    menuPage;
-    addAllureTestHierarchy;
+    cartPage: CartPage;
+    menuPage: MenuPage;
+    addAllureTestHierarchy: string;
   },
   {
     logger;
