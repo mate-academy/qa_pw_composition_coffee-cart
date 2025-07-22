@@ -93,6 +93,7 @@ constructor(page) {
 * `clickYesPromoButton()`, `clickNoPromoButton()`, `assertPromoMessageIsVisible()`;
 14. Update all the tests that use the promo component analogously to step 8 of this instruction.
 15. Run all the tests to make sure nothing is broken.
+!
 16. Create the classes for `Cup`, `Total count`, and `Cart list` components.
 17. Initialize corresponding components in the page's constructors.
 18. Move all corresponding locators and methods to the components.
