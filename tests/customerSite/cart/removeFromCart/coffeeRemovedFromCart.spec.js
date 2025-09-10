@@ -8,17 +8,14 @@ for (const [key] of Object.entries(COFFEE_NAMES)) {
 }
 
 testParameters.forEach(({ coffee }) => {
-  test(`The ${coffee} removed from Cart after clicking remove`, async ({
-    cartPage,
-    menuPage,
-  }) => {
+  test(`The ${coffee} removed from Cart after clicking remove`, async ({ cartPage, menuPage }) => {
     await menuPage.open();
-    await menuPage.clickCoffeeCup(coffee);
+    await menuPage.cup.clickCoffeeCup(coffee);
 
-    await menuPage.clickCartLink();
+    await menuPage.header.clickCartLink();
     await cartPage.waitForLoading();
 
-    await cartPage.clickCoffeeListItemRemoveAllButton(coffee);
-    await cartPage.assertNoCoffeeMessageIsVisible();
+    await cartPage.cartList.clickCoffeeListItemRemoveAllButton(coffee);
+    await cartPage.cartList.assertNoCoffeeMessageIsVisible();
   });
 });
