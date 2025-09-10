@@ -9,14 +9,12 @@ for (const [key, value] of Object.entries(COFFEE_NAMES)) {
 }
 
 testParameters.forEach(({ coffee, price }) => {
-  test(`Total cost is updated after clicking the ${coffee} cup`, async ({
-    menuPage,
-  }) => {
+  test(`Total cost is updated after clicking the ${coffee} cup`, async ({ menuPage }) => {
     const totalPriceStr = totalPriceFormatStr(price);
 
     await menuPage.open();
-    await menuPage.clickCoffeeCup(coffee);
+    await menuPage.cup.clickCoffeeCup(coffee);
 
-    await menuPage.assertTotalCheckoutContainsValue(totalPriceStr);
+    await menuPage.total.assertTotalCheckoutContainsValue(totalPriceStr);
   });
 });

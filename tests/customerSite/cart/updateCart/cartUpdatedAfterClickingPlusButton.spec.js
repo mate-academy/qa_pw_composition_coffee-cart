@@ -2,51 +2,47 @@ import { test } from '../../../_fixtures/fixtures';
 import { priceFormatStr } from '../../../../src/common/helpers/priceFormatters';
 import { COFFEE_NAMES, COFFEE_PRICES } from '../../../../src/constants';
 
-test('Cart updated correctly after clicking plus for drinks', async ({
-  cartPage,
-  menuPage,
-}) => {
+test('Cart updated correctly after clicking plus for drinks', async ({ cartPage, menuPage }) => {
   const oneCappuccinoPrice = priceFormatStr(COFFEE_PRICES.cappuccino);
   const twoCappuccinoPrice = priceFormatStr(COFFEE_PRICES.cappuccino * 2);
   const oneEspressoPrice = priceFormatStr(COFFEE_PRICES.espresso);
   const twoEspressoPrice = priceFormatStr(COFFEE_PRICES.espresso * 2);
-  const totalPriceNum =
-    COFFEE_PRICES.cappuccino * 2 + COFFEE_PRICES.espresso * 2;
+  const totalPriceNum = COFFEE_PRICES.cappuccino * 2 + COFFEE_PRICES.espresso * 2;
   const totalPrice = priceFormatStr(totalPriceNum);
 
   await menuPage.open();
-  await menuPage.clickCoffeeCup(COFFEE_NAMES.cappuccino);
-  await menuPage.clickCoffeeCup(COFFEE_NAMES.espresso);
+  await menuPage.cup.clickCoffeeCup(COFFEE_NAMES.cappuccino);
+  await menuPage.cup.clickCoffeeCup(COFFEE_NAMES.espresso);
 
-  await menuPage.clickCartLink();
+  await menuPage.header.clickCartLink();
   await cartPage.waitForLoading();
 
-  await cartPage.assertCoffeeTotalCostContainsCorrectText(
+  await cartPage.cartList.assertCoffeeTotalCostContainsCorrectText(
     COFFEE_NAMES.espresso,
-    oneEspressoPrice,
+    oneEspressoPrice
   );
 
-  await cartPage.clickCoffeeListItemAddOneButton(COFFEE_NAMES.espresso);
+  await cartPage.cartList.clickCoffeeListItemAddOneButton(COFFEE_NAMES.espresso);
 
-  await cartPage.assertCoffeeTotalCostContainsCorrectText(
+  await cartPage.cartList.assertCoffeeTotalCostContainsCorrectText(
     COFFEE_NAMES.espresso,
-    twoEspressoPrice,
+    twoEspressoPrice
   );
-  await cartPage.assertCoffeeTotalCostContainsCorrectText(
+  await cartPage.cartList.assertCoffeeTotalCostContainsCorrectText(
     COFFEE_NAMES.cappuccino,
-    oneCappuccinoPrice,
+    oneCappuccinoPrice
   );
 
-  await cartPage.clickCoffeeListItemAddOneButton(COFFEE_NAMES.cappuccino);
+  await cartPage.cartList.clickCoffeeListItemAddOneButton(COFFEE_NAMES.cappuccino);
 
-  await cartPage.assertCoffeeTotalCostContainsCorrectText(
+  await cartPage.cartList.assertCoffeeTotalCostContainsCorrectText(
     COFFEE_NAMES.cappuccino,
-    twoCappuccinoPrice,
+    twoCappuccinoPrice
   );
-  await cartPage.assertCoffeeTotalCostContainsCorrectText(
+  await cartPage.cartList.assertCoffeeTotalCostContainsCorrectText(
     COFFEE_NAMES.espresso,
-    twoEspressoPrice,
+    twoEspressoPrice
   );
 
-  await cartPage.assertTotalCheckoutContainsValue(totalPrice);
+  await cartPage.total.assertTotalCheckoutContainsValue(totalPrice);
 });
