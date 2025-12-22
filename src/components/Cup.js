@@ -1,11 +1,11 @@
 // src/components/Cup.js
 import { BaseComponent } from './BaseComponent';
-import { step } from '@playwright/test';
+import { step, expect } from '@playwright/test'; // <-- dodany expect
 
 export class Cup extends BaseComponent {
   constructor(page, coffeeName) {
     super(page);
-    this.coffeeName = coffeeName; // przechowujemy nazwę kawy
+    this.coffeeName = coffeeName;
     this.cupLocator = page.getByTestId(coffeeName.replace(' ', '_'));
   }
 
@@ -15,7 +15,6 @@ export class Cup extends BaseComponent {
     });
   }
 
-  // opcjonalnie metoda do asercji kosztu kawy
   async assertCost(value) {
     const coffeeCup = this.cupLocator;
     const coffeeCostLocator = this.page
@@ -24,7 +23,7 @@ export class Cup extends BaseComponent {
     await step(
       `Assert ${this.coffeeName} cup cost has value: ${value}`,
       async () => {
-        await expect(coffeeCostLocator).toContainText(value);
+        await expect(coffeeCostLocator).toContainText(value); // teraz expect jest dostępny
       },
     );
   }
