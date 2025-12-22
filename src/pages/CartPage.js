@@ -15,6 +15,6 @@ export class CartPage extends BasePage {
 
   // --- Opcjonalnie helper do pojedynczego elementu kawy ---
   coffee(name) {
-    return this.cartList.item(name); // metoda item(name) w CartList.js
+    return this.cartList.coffeeItem(name); // metoda coffeeItem(name) w CartList.js
   }
 }

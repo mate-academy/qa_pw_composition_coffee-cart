@@ -1,5 +1,6 @@
 // src/components/Promo.js
 import { BaseComponent } from './BaseComponent';
+import { expect, step } from '@playwright/test';
 
 export class Promo extends BaseComponent {
   constructor(page) {
