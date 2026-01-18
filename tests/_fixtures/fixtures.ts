@@ -1,6 +1,7 @@
 import { test as base } from '@playwright/test';
 import { MenuPage } from '../../src/pages/MenuPage';
 import { CartPage } from '../../src/pages/CartPage';
+import { Header } from '../../src/components/Header';
 import { Logger } from '../../src/common/logger/Logger';
 import * as allure from 'allure-js-commons';
 import { parseTestTreeHierarchy } from '../../src/common/helpers/allureHelpers';
@@ -9,6 +10,7 @@ export const test = base.extend<
   {
     cartPage;
     menuPage;
+    header;
     addAllureTestHierarchy;
   },
   {
@@ -24,6 +26,11 @@ export const test = base.extend<
     const menuPage = new MenuPage(page);
 
     await use(menuPage);
+  },
+  header: async ({ page }, use) => {
+    const header = new Header(page);
+
+    await use(header);
   },
   logger: [
     async ({}, use) => {
