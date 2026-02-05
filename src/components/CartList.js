@@ -67,8 +67,8 @@ export class CartList extends BaseComponent {
   }
 
   async assertCoffeeNameContainsCorrectText(name) {
-    await step(`Assert the ${name} coffee item name is visible`, async () => {
-      await expect(this.coffeeListItemNameCell(name)).toBeVisible();
+    await step(`Assert the ${name} coffee item name contains correct text`, async () => {
+      await expect(this.coffeeListItemNameCell(name)).toContainText(name);
     });
   }
 

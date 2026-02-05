@@ -4,7 +4,6 @@ import { expect, step } from '@playwright/test';
 export class Promo extends BaseComponent {
   constructor(page) {
     super(page);
-    this.cartLink = page.getByLabel('Cart page');
     this.promoMessage = page.getByText(
       "It's your lucky day! Get an extra cup of Mocha for $4.",
     );
