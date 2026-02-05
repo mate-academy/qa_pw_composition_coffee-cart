@@ -1,17 +1,19 @@
 import { expect, step } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { Header } from '../components/Header';
+import { Promo } from '../components/Promo';
+import { TotalCount } from '../components/TotalCount';
+import { Cup } from '../components/Cup';
 
 export class MenuPage extends BasePage {
   constructor(page) {
     super(page);
     this._url = '/';
-    this.cartLink = page.getByLabel('Cart page');
+    this.header = new Header(page);
+    this.promo = new Promo(page);
+    this.totalCount = new TotalCount(page);
+    this.cup = new Cup(page);
     this.totalCheckout = page.getByTestId('checkout');
-    this.promoMessage = page.getByText(
-      "It's your lucky day! Get an extra cup of Mocha for $4.",
-    );
-    this.yesPromoButton = page.getByRole('button', { name: 'Yes, of course!' });
-    this.noPromoButton = page.getByRole('button', { name: "Nah, I'll skip." });
   }
 
   coffeeCupLocator(coffeeName) {
@@ -31,24 +33,6 @@ export class MenuPage extends BasePage {
     });
   }
 
-  async clickCartLink() {
-    await step(`Click 'Cart' link`, async () => {
-      await this.cartLink.click();
-    });
-  }
-
-  async clickYesPromoButton() {
-    await step(`Click 'Yes' promo button`, async () => {
-      await this.yesPromoButton.click();
-    });
-  }
-
-  async clickNoPromoButton() {
-    await step(`Click 'No' promo button`, async () => {
-      await this.noPromoButton.click();
-    });
-  }
-
   async assertTotalCheckoutContainsValue(value) {
     await step(`Assert Total checkout has value: ${value}`, async () => {
       await expect(this.totalCheckout).toContainText(value);
@@ -61,9 +45,4 @@ export class MenuPage extends BasePage {
     });
   }
 
-  async assertPromoMessageIsVisible() {
-    await step(`Assert promo message is visible`, async () => {
-      await expect(this.promoMessage).toBeVisible();
-    });
-  }
 }

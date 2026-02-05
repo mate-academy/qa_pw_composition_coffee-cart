@@ -10,10 +10,10 @@ test('Discounted Mocha Not added to the Cart after promo rejecting', async ({
   await menuPage.clickCoffeeCup(COFFEE_NAMES.espresso);
   await menuPage.clickCoffeeCup(COFFEE_NAMES.americano);
 
-  await menuPage.assertPromoMessageIsVisible();
-  await menuPage.clickNoPromoButton();
+  await menuPage.promo.assertPromoMessageIsVisible();
+  await menuPage.promo.clickNoPromoButton();
 
-  await menuPage.clickCartLink();
+  await menuPage.header.clickCartLink();
   await cartPage.waitForLoading();
 
   await cartPage.assertCoffeeItemIsVisible(COFFEE_NAMES.espresso);
