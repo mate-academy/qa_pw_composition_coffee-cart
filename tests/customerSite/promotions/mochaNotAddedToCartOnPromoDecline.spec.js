@@ -6,9 +6,9 @@ test('Discounted Mocha Not added to the Cart after promo rejecting', async ({
   menuPage,
 }) => {
   await menuPage.open();
-  await menuPage.clickCoffeeCup(COFFEE_NAMES.cappuccino);
-  await menuPage.clickCoffeeCup(COFFEE_NAMES.espresso);
-  await menuPage.clickCoffeeCup(COFFEE_NAMES.americano);
+  await menuPage.cup.clickCoffeeCup(COFFEE_NAMES.cappuccino);
+  await menuPage.cup.clickCoffeeCup(COFFEE_NAMES.espresso);
+  await menuPage.cup.clickCoffeeCup(COFFEE_NAMES.americano);
 
   await menuPage.promo.assertPromoMessageIsVisible();
   await menuPage.promo.clickNoPromoButton();
@@ -16,9 +16,9 @@ test('Discounted Mocha Not added to the Cart after promo rejecting', async ({
   await menuPage.header.clickCartLink();
   await cartPage.waitForLoading();
 
-  await cartPage.assertCoffeeItemIsVisible(COFFEE_NAMES.espresso);
-  await cartPage.assertCoffeeItemIsHidden('(Discounted) Mocha');
+  await cartPage.cartList.assertCoffeeItemIsVisible(COFFEE_NAMES.espresso);
+  await cartPage.cartList.assertCoffeeItemIsHidden('(Discounted) Mocha');
 
-  await cartPage.assertCoffeeItemIsVisible(COFFEE_NAMES.cappuccino);
-  await cartPage.assertCoffeeItemIsVisible(COFFEE_NAMES.americano);
+  await cartPage.cartList.assertCoffeeItemIsVisible(COFFEE_NAMES.cappuccino);
+  await cartPage.cartList.assertCoffeeItemIsVisible(COFFEE_NAMES.americano);
 });
