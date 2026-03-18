@@ -1,5 +1,5 @@
 import { BasePage } from './BasePage';
-import { Header } from '../components/header';
+import { Header } from '../components/Header';
 import { TotalCount } from '../components/TotalCount';
 import { CartList } from '../components/CartList';
 
