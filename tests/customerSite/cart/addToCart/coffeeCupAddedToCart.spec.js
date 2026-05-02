@@ -20,14 +20,15 @@ testParameters.forEach(({ coffee, price }) => {
     const unitPriceStr = unitPriceFormatStr(price, 1);
 
     await menuPage.open();
-    await menuPage.clickCoffeeCup(coffee);
+    await menuPage.cup.clickCoffeeCup(coffee);
 
-    await menuPage.clickCartLink();
+    await menuPage.header.clickCartLink();
     await cartPage.waitForLoading();
 
-    await cartPage.assertCoffeeNameContainsCorrectText(coffee);
-    await cartPage.assertCoffeeUnitContainsCorrectText(coffee, unitPriceStr);
-    await cartPage.assertCoffeeTotalCostContainsCorrectText(
+    await cartPage.cartPage.assertCoffeeNameContainsCorrectText(coffee);
+    await cartPage.cartPage.assertCoffeeUnitContainsCorrectText(
+      coffee, unitPriceStr);
+    await cartPage.cartPage.assertCoffeeTotalCostContainsCorrectText(
       coffee,
       totalPriceStr,
     );
