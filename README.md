@@ -25,8 +25,6 @@ The **Cart page** consists of the *Header*, *Total count*, and *Cart list* compo
 ![cart page](https://github.com/mate-academy/qa_pw_composition_coffee-cart/blob/main/Cart.png) 
 
 Note that the *Total count* component is small, and it's possible to leave it within the page object. However, as it's used in two pages, we will create a separate class for it to avoid code duplication. 
-
-
 ## Preparation
 
 1. Open the forked repo in VSCode.
