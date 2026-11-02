@@ -36,5 +36,4 @@ export class BasePage {
       await this.page.waitForURL(this.url());
     });
   }
-
 }
